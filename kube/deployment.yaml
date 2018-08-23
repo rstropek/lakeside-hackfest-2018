@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hackfest-templogger
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hackfest-templogger
+  template:
+    metadata:
+      labels:
+        app: hackfest-templogger
+    spec:
+      containers:
+      - name: hackfest-templogger
+        image: hackfestregistry.azurecr.io/hackfest-templogger:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: ConnectionStrings__DefaultConnection
+          value: Server=tcp:hackfest-db.database.windows.net,1433;Initial Catalog=hackfest-templogger;Persist Security Info=False;User ID=hackfest-sa;Password=P@ssw0rd!123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: hackfest-templogger-svc
+spec:
+  selector:
+    app: hackfest-templogger
+  ports:
+  - port: 80
+    targetPort: 80
+  type: LoadBalancer
