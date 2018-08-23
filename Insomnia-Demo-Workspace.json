@@ -1,0 +1,362 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2018-08-23T17:44:29.311Z",
+	"__export_source": "insomnia.desktop.app:v6.0.2",
+	"resources": [
+		{
+			"_id": "wrk_6b58040e895b433e8e867ec2df4ba046",
+			"created": 1535018024873,
+			"description": "",
+			"modified": 1535018024873,
+			"name": "Hackfest",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_b8791ab152274149ac57cbe85442421b",
+			"color": null,
+			"created": 1535018024900,
+			"data": {
+				"host": "http://localhost:5000"
+			},
+			"isPrivate": false,
+			"metaSortKey": 1535039777637,
+			"modified": 1535039790873,
+			"name": "New Environment",
+			"parentId": "wrk_6b58040e895b433e8e867ec2df4ba046",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_2ac0ccc8b7ae4b5c8f2d6d2febe77aec",
+			"cookies": [],
+			"created": 1535018024912,
+			"modified": 1535018024912,
+			"name": "Default Jar",
+			"parentId": "wrk_6b58040e895b433e8e867ec2df4ba046",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "fld_a22f251d5b5a43ac9ce177df724e98bc",
+			"created": 1535027656375,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1535027656375,
+			"modified": 1535027656375,
+			"name": "Temperature Readings",
+			"parentId": "wrk_6b58040e895b433e8e867ec2df4ba046",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_4a2565ce588348aab43b9708d008caf4",
+			"created": 1535027685892,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1535027685892,
+			"modified": 1535027685892,
+			"name": "Alerts",
+			"parentId": "wrk_6b58040e895b433e8e867ec2df4ba046",
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_2467e1b1a810497a94a6098cacf92d13",
+			"authentication": {},
+			"body": {},
+			"created": 1535018057972,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1535018057972,
+			"method": "GET",
+			"modified": 1535039813396,
+			"name": "Query Metadata",
+			"parameters": [],
+			"parentId": "wrk_6b58040e895b433e8e867ec2df4ba046",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ host  }}/odata/$metadata",
+			"_type": "request"
+		},
+		{
+			"_id": "env_0ec63476a77849cf8be7366b919c5d95",
+			"color": null,
+			"created": 1535039781926,
+			"data": {
+				"host": "http://localhost:8080"
+			},
+			"isPrivate": false,
+			"metaSortKey": 1535039781926,
+			"modified": 1535045811493,
+			"name": "Local Docker",
+			"parentId": "env_b8791ab152274149ac57cbe85442421b",
+			"_type": "environment"
+		},
+		{
+			"_id": "env_4b84e4eeeec64a64990f476bba82a175",
+			"color": null,
+			"created": 1535045816337,
+			"data": {
+				"host": "http://23.97.172.13"
+			},
+			"isPrivate": false,
+			"metaSortKey": 1535045816337,
+			"modified": 1535045833100,
+			"name": "AKS",
+			"parentId": "env_b8791ab152274149ac57cbe85442421b",
+			"_type": "environment"
+		},
+		{
+			"_id": "req_3732be6e7fa04235b2e34968fe2857bf",
+			"authentication": {},
+			"body": {},
+			"created": 1535021009640,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1535021750284,
+			"method": "GET",
+			"modified": 1535045839629,
+			"name": "Get TemperatureReadings",
+			"parameters": [],
+			"parentId": "fld_a22f251d5b5a43ac9ce177df724e98bc",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ host  }}/odata/TemperatureReadings",
+			"_type": "request"
+		},
+		{
+			"_id": "req_996a6eac29b5474692c0db370b740021",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"MeasureDateTime\": \"{% now 'iso-8601', '' %}\",\n\t\"Temperature\": 15\n}"
+			},
+			"created": 1535021750234,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_c48e3b8cff37410f8e65b0fef98d91f7",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1535021750234,
+			"method": "POST",
+			"modified": 1535045861503,
+			"name": "Add TemperatureReading",
+			"parameters": [],
+			"parentId": "fld_a22f251d5b5a43ac9ce177df724e98bc",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ host  }}/odata/TemperatureReadings",
+			"_type": "request"
+		},
+		{
+			"_id": "req_657f8557f691425a8bb1c67a0554bf53",
+			"authentication": {},
+			"body": {},
+			"created": 1535022572445,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1535021750259,
+			"method": "GET",
+			"modified": 1535027670158,
+			"name": "Get TemperatureReading by ID",
+			"parameters": [],
+			"parentId": "fld_a22f251d5b5a43ac9ce177df724e98bc",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ host  }}/odata/TemperatureReadings(1)",
+			"_type": "request"
+		},
+		{
+			"_id": "req_3c58c167e00d4fc6aea82a2bcedb15f4",
+			"authentication": {},
+			"body": {},
+			"created": 1535022625315,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_e897c6d5d59c4d0ebff03f6b2c027fef",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1535021750134,
+			"method": "DELETE",
+			"modified": 1535027700955,
+			"name": "Delete TemperatureReading",
+			"parameters": [],
+			"parentId": "fld_a22f251d5b5a43ac9ce177df724e98bc",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ host  }}/odata/TemperatureReadings(1)",
+			"_type": "request"
+		},
+		{
+			"_id": "req_2d2c6926045f4a0b832e43f27dcce92f",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"MeasureDateTime\": \"{% now 'iso-8601', '' %}\",\n\t\"Temperature\": -299\n}"
+			},
+			"created": 1535024075281,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_c48e3b8cff37410f8e65b0fef98d91f7",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1535021750209,
+			"method": "POST",
+			"modified": 1535027696958,
+			"name": "Add invalid TemperatureReading",
+			"parameters": [],
+			"parentId": "fld_a22f251d5b5a43ac9ce177df724e98bc",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ host  }}/odata/TemperatureReadings",
+			"_type": "request"
+		},
+		{
+			"_id": "req_29dbc597593c402ebd918fcb0eea4fd3",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"Temperature\": 49.99\n}"
+			},
+			"created": 1535025169714,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_c48e3b8cff37410f8e65b0fef98d91f7",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1535021750184,
+			"method": "PATCH",
+			"modified": 1535027678183,
+			"name": "Patch TemperatureReading",
+			"parameters": [],
+			"parentId": "fld_a22f251d5b5a43ac9ce177df724e98bc",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ host  }}/odata/TemperatureReadings(1)",
+			"_type": "request"
+		},
+		{
+			"_id": "req_78e6ce19972f448d8e7379e67742476e",
+			"authentication": {},
+			"body": {},
+			"created": 1535025357684,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1535021750246.5,
+			"method": "GET",
+			"modified": 1535027672975,
+			"name": "Query TemperatureReadings",
+			"parameters": [],
+			"parentId": "fld_a22f251d5b5a43ac9ce177df724e98bc",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ host  }}/odata/TemperatureReadings?$filter=Temperature ge 30&$top=5&",
+			"_type": "request"
+		},
+		{
+			"_id": "req_cabbc20b455d453e86e8b1c44fc2fe03",
+			"authentication": {},
+			"body": {},
+			"created": 1535025909165,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1535021657609.75,
+			"method": "GET",
+			"modified": 1535036470853,
+			"name": "Query Alerts",
+			"parameters": [],
+			"parentId": "fld_4a2565ce588348aab43b9708d008caf4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ host  }}/odata/Alerts?$expand=TemperatureReading",
+			"_type": "request"
+		},
+		{
+			"_id": "req_beaa15cf647c474eacc0a9930549e9d8",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"TemperatureReadingId\": 1,\n\t\"Message\": \"This is a demo alert\"\n}"
+			},
+			"created": 1535025951868,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_c48e3b8cff37410f8e65b0fef98d91f7",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1535021657659.75,
+			"method": "POST",
+			"modified": 1535027689773,
+			"name": "Add Alert",
+			"parameters": [],
+			"parentId": "fld_4a2565ce588348aab43b9708d008caf4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ host  }}/odata/Alerts",
+			"_type": "request"
+		}
+	]
+}
