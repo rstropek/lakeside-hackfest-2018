@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+     - "8080:80"
+    environment:
+      ConnectionStrings:DefaultConnection: Server=db;Database=IotLogger;User=sa;Password=P@ssw0rd!123
+    links:
+     - db
+  db:
+    image: microsoft/mssql-server-linux
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: P@ssw0rd!123
